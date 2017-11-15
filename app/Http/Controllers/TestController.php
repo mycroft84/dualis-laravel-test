@@ -17,11 +17,17 @@ class TestController extends Controller
         $thief->name = 'Thief 1';
         $thief->save();*/
 
-        factory(Thief::class, 3)->create()->each(function ($u) {
-            $u->cars()->save(factory(Car::class)->make());
-        });
+        /*factory(Thief::class, 3)->create()->each(function ($u) {
+            $u->cars()->saveMany(factory(Car::class,5)->make());
+        });*/
 
-        //return view('Test.index');
+        $thief = Thief::where('name','LIKE','%Dr.%')->first();
+        $cars = $thief->cars()->orderBy('name')->get();
+
+        return view('Test.cars',[
+            'thief'=>$thief,
+            'cars'=>$cars
+        ]);
     }
 
     public function userStore(StoreUser $request)

@@ -1,0 +1,11 @@
+{% extends "Templates/default.twig" %}
+
+{% block content %}
+    <h1>{{ thief.name }} lopott autói</h1>
+
+    <ol>
+        {% for item in cars %}
+            <li>{{ item.name }}</li>
+        {% endfor %}
+    </ol>
+{% endblock %}
