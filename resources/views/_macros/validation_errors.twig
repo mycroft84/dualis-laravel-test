@@ -1,0 +1,11 @@
+{% macro addClass(errors,name) %}
+{{ errors.has(name) ? ' has-error' : '' }}
+{% endmacro %}
+
+{% macro message(errors,name) %}
+    {% if errors.has(name) %}
+        <span class="help-block">
+        <strong>{{ errors.first(name) }}</strong>
+    </span>
+    {% endif %}
+{% endmacro %}

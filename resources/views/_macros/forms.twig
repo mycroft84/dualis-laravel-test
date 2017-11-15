@@ -1,0 +1,10 @@
+{% macro input(name,title,errors,type = 'text') %}
+    {% import "_macros/validation_errors.twig" as validation %}
+
+    <div class="form-group{{ validation.addClass(errors,name) }}">
+        <label for="{{ name }}">{{ title }}</label>
+        <input type="{{ type }}" name="{{ name }}" value="{{ old(name) }}" class="form-control" id="{{ name }}" placeholder="{{ title }}">
+
+        {{ validation.message(errors,name) }}
+    </div>
+{% endmacro %}

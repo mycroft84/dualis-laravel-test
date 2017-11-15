@@ -1,0 +1,22 @@
+{% extends "Templates/default.twig" %}
+{% import "_macros/forms.twig" as forms %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form method="post" action="{{ route('testUserStore') }}">
+                {{ csrf_field() }}
+
+                {{ forms.input('username','User name *',errors) }}
+                {{ forms.input('email','Email address *',errors) }}
+                {{ forms.input('password','Password *',errors,'password') }}
+                {{ forms.input('password_confirm','Password confirm *',errors,'password') }}
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
