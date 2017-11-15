@@ -12,6 +12,11 @@ class Car extends Model
 
     public function owner()
     {
-        return $this->belongsTo(Owner::class,'id','id');
+        return $this->belongsTo(Owner::class,'owner_id','id');
+    }
+
+    public function thief()
+    {
+        return $this->belongsTo(Thief::class,'thief_id','id');
     }
 }
