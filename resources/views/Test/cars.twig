@@ -8,4 +8,39 @@
             <li>{{ item.name }}</li>
         {% endfor %}
     </ol>
+
+    <ol>
+        <li><strike>Csináljunk egy routot</strike></li>
+        <li><strike>A route alapján csináljuk meg a contollert/action-t</strike></li>
+        <li><strike>
+            Csináljunk egy view-t a Thief táblára
+            <ol>
+                <li>Kell egy db form</li>
+                <li>kell egy db mező bele</li>
+                <li>method: post</li>
+                <li>
+                    action: kell egy új route ami csak postot fogad el
+                    <ol>
+                        <li>kell egy action, lehetőleg a fentebb már létrehozott contollerbe</li>
+                    </ol>
+                </li>
+            </ol>
+            </strike>
+        </li>
+        <li>kell egy form request, a név legyen kötelező</li>
+        <li>
+            Ha rossz:
+            <ol>
+                <li>Vissza az előző oldalra (ezt nem kell automatikusan csinálja)</li>
+                <li>hibaüzeneteket ki kell írni (error.has('name'),error.first('name'))</li>
+            </ol>
+        </li>
+        <li>
+            Ha jó: írjuk ki a twigbe: hogy sikeres mentés
+        </li>
+    </ol>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock %}

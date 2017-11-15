@@ -27,3 +27,7 @@ Route::post('/user', 'TestController@userStore')->name('testUserStore');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/thieves','ThievesController@index')->name('thievesIndex');
+Route::get('/thieves/create','ThievesController@create')->name('thievesCreate');
+Route::post('/thieves/store', 'ThievesController@store')->name('thievesStore');
