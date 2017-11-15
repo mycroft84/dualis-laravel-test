@@ -8,7 +8,7 @@
             <form method="post" action="{{ route('thievesStore') }}">
                 {{ csrf_field() }}
 
-                {{ forms.input('name','Thief name *',errors) }}
+                {{ forms.input('name','Thief name *',errors,thief.name) }}
 
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>

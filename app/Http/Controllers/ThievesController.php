@@ -10,12 +10,23 @@ class ThievesController extends Controller
 {
     public function index()
     {
-        dd('index');
+        $thieves = Thief::all();
+
+        return view('Thieves.index',[
+            'thieves'=>$thieves
+        ]);
     }
 
     public function create()
     {
         return view('Thieves.create');
+    }
+
+    public function update(Thief $thief)
+    {
+        return view('Thieves.create',[
+            'thief'=>$thief
+        ]);
     }
 
     public function store(ThiefStore $request)

@@ -1,0 +1,28 @@
+{% extends "Templates/default.twig" %}
+
+{% block content %}
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in thieves %}
+                <tr>
+                    <td>{{ item.getKey() }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ route('thievesUpdate',{thief: item.getKey()}) }}">
+                            U
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
