@@ -10,13 +10,30 @@ class ThievesController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->get('term'));
+        $term = $request->get('term');
+        $orderDir = $this->getOrderDir($request->get('orderDir'));
 
-        $thieves = Thief::all();
+        $thieves = $this->searchThief($term,$request->get('orderDir'));
 
         return view('Thieves.index',[
-            'thieves'=>$thieves
+            'thieves'=>$thieves,
+            'term'=>$term,
+            'orderDir'=>$orderDir
         ]);
+    }
+
+    protected function getOrderDir($dir)
+    {
+        if (!$dir) return 'asc';
+
+        return ($dir == 'asc') ? 'desc' : 'asc';
+    }
+
+    protected function searchThief($term,$orderDir)
+    {
+        if (!$term) return Thief::orderBy('name',$orderDir)->get();
+
+        return Thief::where('name','LIKE','%'.$term.'%')->orderBy('name',$orderDir)->get();
     }
 
     public function create()

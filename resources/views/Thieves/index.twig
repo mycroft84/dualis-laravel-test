@@ -6,7 +6,7 @@
         <div class="col-md-4" style="margin-left: 100px;margin-top: 20px">
             <form method="get">
                 <div class="form-group">
-                    <input class="form-control" style="float: left" name="term" type="text">
+                    <input class="form-control" value="{{ term }}" style="float: left" name="term" type="text">
                     <button class="btn btn-info">
                         <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
                     </button>
@@ -21,7 +21,9 @@
                 <thead>
                     <tr>
                         <td>#</td>
-                        <td>Name</td>
+                        <td>
+                            <a href="{{ route('thievesIndex') }}?orderDir={{ orderDir }}{% if term %}&term={{ term }}{% endif %}">Name</a>
+                        </td>
                         <td>
                             Action
                             <a class="btn btn-success" href="{{ route('thievesCreate') }}">
