@@ -988,6 +988,8 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+__webpack_require__(52);
+
 Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
@@ -1008,9 +1010,9 @@ window._ = __webpack_require__(12);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(14);
+    window.$ = window.jQuery = __webpack_require__(14);
 
-  __webpack_require__(15);
+    __webpack_require__(15);
 } catch (e) {}
 
 /**
@@ -1032,9 +1034,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token.content
+        }
+    });
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -42814,6 +42822,21 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports) {
+
+console.log('itt');
 
 /***/ })
 /******/ ]);
