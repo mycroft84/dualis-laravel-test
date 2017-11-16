@@ -32,3 +32,4 @@ Route::get('/thieves','ThievesController@index')->name('thievesIndex');
 Route::get('/thieves/{thief}','ThievesController@update')->name('thievesUpdate')->where('thief','\d+');
 Route::get('/thieves/create','ThievesController@create')->name('thievesCreate');
 Route::post('/thieves/store/{thief?}', 'ThievesController@store')->name('thievesStore')->where('thief','\d+');
+Route::delete('/thieves/{thief}', 'ThievesController@delete')->name('thiefDelete')->where('thief','\d+');

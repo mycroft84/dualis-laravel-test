@@ -58,4 +58,11 @@ class ThievesController extends Controller
 
         return redirect(route('thievesIndex'));
     }
+
+    public function delete(Thief $thief)
+    {
+        $thief->delete();
+
+        return ['error'=>false];
+    }
 }
