@@ -31,4 +31,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/thieves','ThievesController@index')->name('thievesIndex');
 Route::get('/thieves/{thief}','ThievesController@update')->name('thievesUpdate')->where('thief','\d+');
 Route::get('/thieves/create','ThievesController@create')->name('thievesCreate');
-Route::post('/thieves/store', 'ThievesController@store')->name('thievesStore');
+Route::post('/thieves/store/{thief?}', 'ThievesController@store')->name('thievesStore')->where('thief','\d+');

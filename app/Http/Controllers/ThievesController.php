@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class ThievesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->get('term'));
+
         $thieves = Thief::all();
 
         return view('Thieves.index',[
@@ -29,9 +31,11 @@ class ThievesController extends Controller
         ]);
     }
 
-    public function store(ThiefStore $request)
+    public function store(ThiefStore $request,Thief $thief = null)
     {
-        $thief = new Thief();
+        if (!$thief) {
+            $thief = new Thief();
+        }
         $thief->name = $request->get('name');
         $thief->save();
 
