@@ -33,3 +33,9 @@ Route::get('/thieves/{thief}','ThievesController@update')->name('thievesUpdate')
 Route::get('/thieves/create','ThievesController@create')->name('thievesCreate');
 Route::post('/thieves/store/{thief?}', 'ThievesController@store')->name('thievesStore')->where('thief','\d+');
 Route::delete('/thieves/{thief}', 'ThievesController@delete')->name('thiefDelete')->where('thief','\d+');
+
+Route::get('/cars','CarsController@index')->name('carsIndex');
+Route::get('/cars/{car}','CarsController@update')->name('carsUpdate')->where('car','\d+');
+Route::get('/cars/create','CarsController@create')->name('carsCreate');
+Route::post('/cars/store/{car?}', 'CarsController@store')->name('carsStore')->where('car','\d+');
+Route::delete('/cars/{car}', 'CarsController@delete')->name('carsDelete')->where('car','\d+');
