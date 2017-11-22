@@ -1,0 +1,19 @@
+{% extends "Templates/default.twig" %}
+{% import "_macros/forms.twig" as forms %}
+
+{% block content %}
+    <h5>Kérlek add meg a neved és hogy hány feladatot szeretnél!</h5>
+
+    <div class="row">
+        <div class="col-md-6" style="margin-left: 20px">
+            <form method="post" action="{{ route('exercisesTask') }}">
+                {{ csrf_field() }}
+
+                {{ forms.input('name','Your name *',errors) }}
+                {{ forms.input('task_number','Task number *',errors) }}
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

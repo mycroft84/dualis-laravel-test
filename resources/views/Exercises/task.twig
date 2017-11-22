@@ -1,0 +1,23 @@
+{% extends "Templates/default.twig" %}
+{% import "_macros/forms.twig" as forms %}
+
+{% block content %}
+    <h1>Helló, {{ name }}</h1>
+    <hr>
+
+    <form action="{{ route('exercisesStore') }}" method="post" >
+        {{ csrf_field() }}
+
+        <input type="hidden" name="name" value="{{ name }}">
+        <ul>
+            {% for item in tasks %}
+                <input type="hidden" name="number_1[]" value="{{ item.number_1 }}">
+                <input type="hidden" name="number_2[]" value="{{ item.number_2 }}">
+                {{ item.number_1 }} + {{ item.number_2 }} = <input type="text" name="result[]"><br>
+            {% endfor %}
+        </ul>
+
+        <button class="btn btn-info">Beküldés</button>
+    </form>
+
+{% endblock %}

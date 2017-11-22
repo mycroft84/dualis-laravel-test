@@ -1,0 +1,39 @@
+{% extends "Templates/default.twig" %}
+
+{% block content %}
+<h1>Helló, {{ exercise.name }}</h1>
+<hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Number 1</th>
+                        <th>Number 2</th>
+                        <th>Real result</th>
+                        <th>User result</th>
+                        <th>Is Right</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in exercise.tasks %}
+                        <tr>
+                            <td>{{ item.number_1 }}</td>
+                            <td>{{ item.number_2 }}</td>
+                            <td>{{ item.real_result }}</td>
+                            <td>{{ item.user_result }}</td>
+                            <td>
+                                {% if item.is_right %}
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

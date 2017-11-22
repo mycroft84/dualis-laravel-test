@@ -39,3 +39,7 @@ Route::get('/cars/{car}','CarsController@update')->name('carsUpdate')->where('ca
 Route::get('/cars/create','CarsController@create')->name('carsCreate');
 Route::post('/cars/store/{car?}', 'CarsController@store')->name('carsStore')->where('car','\d+');
 Route::delete('/cars/{car}', 'CarsController@delete')->name('carsDelete')->where('car','\d+');
+
+Route::get('/exercises','ExercisesController@index')->name('exercisesIndex');Route::get('/exercises/{exercise}','ExercisesController@details')->name('exercisesDetails');
+Route::post('/exercises/task','ExercisesController@task')->name('exercisesTask');
+Route::post('/exercises/store','ExercisesController@store')->name('exercisesStore');
