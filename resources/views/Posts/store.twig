@@ -1,0 +1,11 @@
+{% extends "Templates/default.twig" %}
+
+{% block content %}
+
+    {% if hasError == false %}
+        <div class="alert alert-success">Sikeres mentés</div>
+    {% else %}
+        <div class="alert alert-danger">Sikertelen mentés</div>
+    {% endif %}
+
+{% endblock %}

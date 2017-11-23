@@ -1,0 +1,30 @@
+{% extends "Templates/default.twig" %}
+{% import "_macros/forms.twig" as forms %}
+
+{% block content %}
+
+    <h1>{{ post.title }} - {{ post.publish_date.format('H:i, d/m/Y') }}</h1>
+
+    <h3>{{ post.lead }}</h3>
+
+    <p>{{ post.text }}</p>
+
+    <hr>
+    <h2>Kommentek</h2>
+
+    <ul>
+        {% for item in comments %}
+            {{ item.email }} - {{ item.text }}
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{{ route('postsComment',{post: post.getKey()}) }}">
+        {{ csrf_field() }}
+
+        {{ forms.input('email','Email *',errors) }}
+        {{ forms.textarea('text','Text *',errors) }}
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+{% endblock %}

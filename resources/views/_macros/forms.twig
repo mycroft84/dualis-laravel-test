@@ -23,3 +23,14 @@
         {{ validation.message(errors,name) }}
     </div>
 {% endmacro %}
+
+{% macro textarea(name,title,errors,value='') %}
+    {% import "_macros/validation_errors.twig" as validation %}
+
+    <div class="form-group{{ validation.addClass(errors,name) }}">
+        <label for="{{ name }}">{{ title }}</label>
+        <textarea name="{{ name }}" class="form-control" id="{{ name }}" placeholder="{{ title }}">{{ old(name)|default(value) }}</textarea>
+
+        {{ validation.message(errors,name) }}
+    </div>
+{% endmacro %}

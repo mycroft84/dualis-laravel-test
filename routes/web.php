@@ -43,3 +43,21 @@ Route::delete('/cars/{car}', 'CarsController@delete')->name('carsDelete')->where
 Route::get('/exercises','ExercisesController@index')->name('exercisesIndex');Route::get('/exercises/{exercise}','ExercisesController@details')->name('exercisesDetails');
 Route::post('/exercises/task','ExercisesController@task')->name('exercisesTask');
 Route::post('/exercises/store','ExercisesController@store')->name('exercisesStore');
+
+Route::prefix('posts')->group(function () {
+    Route::get('/','PostsController@index')->name('postsIndex');
+    Route::get('/create','PostsController@create')->name('postsCreate');
+    Route::post('/store/{post?}', 'PostsController@store')->name('postsStore')->where('post','\d+');
+
+    Route::get('/{post}','PostsController@update')->name('postsUpdate')->where('post','\d+');
+    Route::delete('/{post}', 'PostsController@delete')->name('postsDelete')->where('post','\d+');
+
+    Route::get('/comments/{post}', 'PostsController@commentList')->name('postsCommentList')->where('post','\d+');
+    Route::get('/comments/enabled/{comment}', 'PostsController@commentEnabled')->name('postsCommentEnabled')->where('comment','\d+');
+});
+
+Route::prefix('hirek')->group(function () {
+    Route::get('/','PostsController@lists')->name('postsList');
+    Route::get('/{post}','PostsController@details')->name('postsDetails')->where('post','\d+');
+    Route::post('/comment/{post}', 'PostsController@comment')->name('postsComment')->where('post','\d+');
+});
