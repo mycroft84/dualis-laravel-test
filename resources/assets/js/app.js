@@ -18,6 +18,7 @@ window.Vue = require('vue');
 require('./app.jquery');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('task-list', require('./components/ListComponent.vue'));
 
 const app = new Vue({
     el: '#app'

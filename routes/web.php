@@ -61,3 +61,10 @@ Route::prefix('hirek')->group(function () {
     Route::get('/{post}','PostsController@details')->name('postsDetails')->where('post','\d+');
     Route::post('/comment/{post}', 'PostsController@comment')->name('postsComment')->where('post','\d+');
 });
+
+Route::prefix('todo')->group(function () {
+    Route::get('/','TodoController@index')->name('todoList');
+    Route::delete('/delete/{task}','TodoController@delTask')->name('todoDelete')->where('task','\d+');
+    Route::post('/store','TodoController@store')->name('todoStore');
+    Route::get('/done/{task}', 'TodoController@done')->name('todoDone')->where('task','\d+');
+});

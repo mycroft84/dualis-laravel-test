@@ -1,0 +1,28 @@
+{% extends "Templates/default.twig" %}
+{% import "_macros/forms.twig" as forms %}
+
+{% block content %}
+    <h1>Todo List</h1>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-push-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New Task</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ route('todoStore') }}" method="post">
+                        {{ csrf_field() }}
+
+                        {{ forms.input('task','Task name *',errors) }}
+
+                        <button class="btn btn-success">Add Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <task-list></task-list>
+
+{% endblock %}
