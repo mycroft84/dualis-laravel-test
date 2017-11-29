@@ -1,0 +1,121 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Thief"
+  },
+  "paths": {
+    "/api/thief": {
+      "get": {
+        "summary": "Tolvajok listázása",
+        "operationId": "thiefList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Thief"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új tolvaj hozzáadása",
+        "operationId": "thiefCreate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ThiefCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/thief/{id}": {
+      "put": {
+        "summary": "Tolvaj módosítása",
+        "operationId": "thiefId",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ThiefIdInPath"
+          },
+          {
+            "$ref": "#/parameters/ThiefCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Tolvaj törlése",
+        "operationId": "thiefDelete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ThiefIdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "ThiefCreateData": {
+      "in": "body",
+      "name": "body",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ThiefIdInPath": {
+      "in": "path",
+      "name": "id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "definitions": {
+    "Thief": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
