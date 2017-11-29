@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskApiStore;
 use App\Http\Requests\TaskStore;
 use App\Http\Resources\TaskCollection;
 use App\Models\Task;
@@ -15,7 +16,7 @@ class TaskController extends Controller
         return new TaskCollection(Task::all());
     }
 
-    public function create(Request $request)
+    public function create(TaskApiStore $request)
     {
         $task = new Task();
         $task->text = $request->get('name');
