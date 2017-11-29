@@ -1,0 +1,143 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Task"
+  },
+  "paths": {
+    "/api/task": {
+      "get": {
+        "summary": "Task listázása",
+        "operationId": "taskList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Task"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új task hozzáadása",
+        "operationId": "taskCreate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/TaskCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/task/{id}": {
+      "put": {
+        "summary": "Task módosítása",
+        "operationId": "taskId",
+        "parameters": [
+          {
+            "$ref": "#/parameters/TaskIdInPath"
+          },
+          {
+            "$ref": "#/parameters/TaskCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Task törlése",
+        "operationId": "taskDelete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/TaskIdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/task/{id}/done": {
+      "put": {
+        "summary": "set done",
+        "operationId": "taskSetDone",
+        "parameters": [
+          {
+            "$ref": "#/parameters/TaskIdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "TaskCreateData": {
+      "in": "body",
+      "name": "body",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TaskIdInPath": {
+      "in": "path",
+      "name": "id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "definitions": {
+    "Task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "done": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

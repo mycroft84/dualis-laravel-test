@@ -1,0 +1,138 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Car"
+  },
+  "paths": {
+    "/api/car": {
+      "get": {
+        "summary": "Autók listázása",
+        "operationId": "carList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új autó hozzáadása",
+        "operationId": "carCreate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CarCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/car/{id}": {
+      "put": {
+        "summary": "Autó módosítása",
+        "operationId": "carId",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CarIdInPath"
+          },
+          {
+            "$ref": "#/parameters/CarCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Autó törlése",
+        "operationId": "carDelete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CarIdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "CarCreateData": {
+      "in": "body",
+      "name": "body",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "thief": {
+            "$ref": "#/definitions/Thief"
+          }
+        }
+      }
+    },
+    "CarIdInPath": {
+      "in": "path",
+      "name": "id",
+      "required": true,
+      "type": "integer"
+    }
+  },
+  "definitions": {
+    "Car": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "thief": {
+          "$ref": "#/definitions/Thief"
+        }
+      }
+    },
+    "Thief": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
