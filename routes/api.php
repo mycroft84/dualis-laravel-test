@@ -21,6 +21,16 @@ Route::namespace('Api')->group(function () {
     Route::post('/category','CategoryController@create')->name('categoryCreate');
     Route::delete('/category/{category}','CategoryController@delete')->name('categoryDelete')->where('category','\d+');
     Route::put('/category/{category}','CategoryController@update')->name('categoryUpdate')->where('category','\d+');
+
+    Route::get('/question','QuestionController@index')->name('questionIndex');
+    Route::post('/question','QuestionController@create')->name('questionCreate');
+    Route::delete('/question/{question}','QuestionController@delete')->name('questionDelete')->where('question','\d+');
+    Route::put('/question/{question}','QuestionController@update')->name('questionUpdate')->where('question','\d+');
+
+    Route::get('/answer','AnswerController@index')->name('answerIndex');
+    Route::post('/answer','AnswerController@create')->name('answerCreate');
+    Route::delete('/answer/{answer}','AnswerController@delete')->name('answerDelete')->where('answer','\d+');
+    Route::put('/answer/{answer}','AnswerController@update')->name('answerUpdate')->where('answer','\d+');
 });
 
 
