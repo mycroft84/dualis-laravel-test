@@ -17,7 +17,7 @@ class Question extends Model
 
     public function answers()
     {
-        return $this->hasMany(Answers::class,'answer_id','id');
+        return $this->hasMany(Answers::class,'question_id','id');
     }
 
     public function quize_questions()

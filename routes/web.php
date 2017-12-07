@@ -27,6 +27,7 @@ Route::post('/user', 'TestController@userStore')->name('testUserStore');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/test', 'TestController@index')->name('test');
 
 Route::get('/thieves','ThievesController@index')->name('thievesIndex');
 Route::get('/thieves/{thief}','ThievesController@update')->name('thievesUpdate')->where('thief','\d+');

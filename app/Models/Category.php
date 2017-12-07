@@ -12,7 +12,7 @@ class Category extends Model
 
     public function questions()
     {
-        return $this->hasMany(Question::class,'question_id','id');
+        return $this->hasMany(Question::class,'category_id','id');
     }
 
     public function quize_category()
