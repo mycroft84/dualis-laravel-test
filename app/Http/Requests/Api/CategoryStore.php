@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\ApiFormRequest;
 
-class TaskApiStore extends ApiFormRequest
+class CategoryStore extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +24,7 @@ class TaskApiStore extends ApiFormRequest
     public function rules()
     {
         return [
-            'task'=>'required',
+            'name'=>'required',
         ];
     }
 }
