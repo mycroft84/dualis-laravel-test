@@ -1,0 +1,456 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Quize"
+  },
+  "paths": {
+    "/api/category": {
+      "get": {
+        "summary": "Kategóriák listázása",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új kategória hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CategoryCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category/{id}": {
+      "delete": {
+        "summary": "Kategória törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "put": {
+        "summary": "Kategória módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          },
+          {
+            "$ref": "#/parameters/CategoryCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/question": {
+      "get": {
+        "summary": "Kérdések listázása",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új kérdés hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/QuestionCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/question/{id}": {
+      "delete": {
+        "summary": "Kérdés törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "put": {
+        "summary": "Kérdés módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          },
+          {
+            "$ref": "#/parameters/QuestionCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/answer": {
+      "get": {
+        "summary": "Válaszok listázása",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Answer"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új kérdés hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/AnswerCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/answer/{id}": {
+      "delete": {
+        "summary": "Válasz törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "put": {
+        "summary": "Válasz módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          },
+          {
+            "$ref": "#/parameters/AnswerCreateData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/quize": {
+      "get": {
+        "summary": "Új quize kérése",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Quize"
+            }
+          }
+        }
+      }
+    },
+    "/api/quize/{id}": {
+      "post": {
+        "summary": "Kvíz beküldése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPatch"
+          },
+          {
+            "$ref": "#/parameters/QuizeData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QuizeResult"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "CategoryCreateData": {
+      "in": "body",
+      "name": "sajt",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/CategoryCreate"
+      }
+    },
+    "IdInPatch": {
+      "in": "path",
+      "name": "id",
+      "type": "integer",
+      "required": true
+    },
+    "QuestionCreateData": {
+      "in": "body",
+      "name": "bor",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/QuestionCreate"
+      }
+    },
+    "AnswerCreateData": {
+      "in": "body",
+      "name": "tokmindegy",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/AnswerCreate"
+      }
+    },
+    "QuizeData": {
+      "in": "body",
+      "name": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/QuizeBack"
+      }
+    }
+  },
+  "definitions": {
+    "Thief": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "CategoryCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Question": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "QuestionCreate": {
+      "type": "object",
+      "properties": {
+        "category_id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Answer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "question_id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "AnswerCreate": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Quize": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuizeCategory"
+          }
+        }
+      }
+    },
+    "QuizeCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuizeQuestion"
+          }
+        }
+      }
+    },
+    "QuizeQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuizeAnswers"
+          }
+        }
+      }
+    },
+    "QuizeAnswers": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "QuizeBack": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "QuizeResult": {
+      "type": "object",
+      "properties": {
+        "good": {
+          "type": "integer"
+        },
+        "percent": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
