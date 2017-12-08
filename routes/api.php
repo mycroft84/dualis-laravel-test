@@ -31,6 +31,8 @@ Route::namespace('Api')->group(function () {
     Route::post('/answer','AnswerController@create')->name('answerCreate');
     Route::delete('/answer/{answer}','AnswerController@delete')->name('answerDelete')->where('answer','\d+');
     Route::put('/answer/{answer}','AnswerController@update')->name('answerUpdate')->where('answer','\d+');
+
+    Route::get('/quize','QuizeController@index')->name('quizeIndex');
 });
 
 
