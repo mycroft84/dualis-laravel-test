@@ -13,7 +13,7 @@ class QuizeController extends Controller
 
 
         $quize = (new Quize())->where('id',2)->first();
-        return $quize->getForJson()->toArray();
+        return new \App\Http\Resources\Quize($quize);
     }
 
 }
