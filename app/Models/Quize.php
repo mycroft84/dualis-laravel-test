@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Quize\Answer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -97,5 +98,18 @@ class Quize extends Model
         }
 
         return $result;
+    }
+
+    public function getResult(array $ids)
+    {
+        $answers = Answer::whereIn('id',$ids)->get();
+
+        $count = $answers->count();
+        $sum = $answers->sum('is_right');
+
+        return [
+            'good'=>$sum,
+            'percent'=>($sum/$count) *  100
+        ];
     }
 }

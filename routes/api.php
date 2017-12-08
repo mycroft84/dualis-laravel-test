@@ -33,6 +33,7 @@ Route::namespace('Api')->group(function () {
     Route::put('/answer/{answer}','AnswerController@update')->name('answerUpdate')->where('answer','\d+');
 
     Route::get('/quize','QuizeController@index')->name('quizeIndex');
+    Route::post('/quize/{quize}','QuizeController@result')->name('quizeResult')->where('quize','\d+');;
 });
 
 

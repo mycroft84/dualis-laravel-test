@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quize;
+use Illuminate\Http\Request;
 
 class QuizeController extends Controller
 {
@@ -16,4 +17,8 @@ class QuizeController extends Controller
         return new \App\Http\Resources\Quize($quize);
     }
 
+    public function result(Quize $quize,Request $request)
+    {
+        return $quize->getResult($request->get('ids'));
+    }
 }
