@@ -1,0 +1,533 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Movies"
+  },
+  "paths": {
+    "/api/category": {
+      "get": {
+        "summary": "Kategóriák listázása",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ListDataIDName"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új kategória hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category/{id}": {
+      "put": {
+        "summary": "Kategória módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          },
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Kategória törlése",
+        "operationId": "carDelete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/tag": {
+      "get": {
+        "summary": "Címkék listázása",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ListDataIDName"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új tag hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tag/{id}": {
+      "put": {
+        "summary": "Tag módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          },
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Tag törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/actor": {
+      "get": {
+        "summary": "Színészek listázása",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ListDataIDName"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új színész hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/actor/{id}": {
+      "put": {
+        "summary": "Színész módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          },
+          {
+            "$ref": "#/parameters/CreateDataWithName"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Színész törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/movie": {
+      "get": {
+        "summary": "Filmek listázása",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movies"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Új film hozzáadása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/CreateMovies"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/movie/{id}": {
+      "get": {
+        "summary": "Adott film részletei",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Movies"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Film módosítása",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          },
+          {
+            "$ref": "#/parameters/CreateMovies"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Film törlése",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        }
+      }
+    },
+    "/api/movie/{id}/vote": {
+      "post": {
+        "summary": "Szavazás",
+        "parameters": [
+          {
+            "$ref": "#/parameters/IdInPath"
+          },
+          {
+            "$ref": "#/parameters/Vote"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/movie/search": {
+      "get": {
+        "summary": "Film keresése",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "term",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "order",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "page",
+            "required": true,
+            "type": "integer"
+          },{
+            "in": "header",
+            "name": "limit",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Movies"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "CreateDataWithName": {
+      "in": "body",
+      "name": "body",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "IdInPath": {
+      "in": "path",
+      "name": "id",
+      "required": true,
+      "type": "integer"
+    },
+    "CreateMovies": {
+      "in": "body",
+      "name": "body",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "lead": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "actors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "actor_id": {
+                  "type": "integer"
+                },
+                "forming": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Vote": {
+      "in": "body",
+      "name": "body",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "score": {
+            "type": "integer"
+          },
+          "ip": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ListDataIDName": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "integer"
+        }
+      }
+    },
+    "Movies": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "lead": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "score": {
+            "type": "number"
+        },
+        "score_num": {
+          "type": "integer"
+        },
+        "category": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "forming": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
